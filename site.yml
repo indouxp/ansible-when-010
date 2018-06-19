@@ -1,0 +1,13 @@
+---
+- hosts: 
+    - primary
+    - secondary
+  tasks:
+    - name: primary
+      #shell: echo "localhost"
+      debug: var=inventory_hostname
+      when: inventory_hostname == "localhost"
+    - name: secondary
+      #shell: echo "no localhost"
+      debug: var=inventory_hostname
+      when: inventory_hostname != "localhost"
